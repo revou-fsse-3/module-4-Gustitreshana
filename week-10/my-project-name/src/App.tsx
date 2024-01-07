@@ -1,4 +1,5 @@
 import "./App.css";
+import CategoryContainer from "./components/CategoryContainer";
 import LoginContainer from "./components/LoginContainer";
 import Navbar from "./components/Navbar";
 import RegisterContainer from "./components/RegisterContainer";
@@ -12,7 +13,7 @@ function App() {
     <Routes>
       <Route path="/login" element={<LoginContainer />} />
       <Route path="/register" element={<RegisterContainer />} />
-      {/* <Route path="/category" element={<CategoryContainer />} /> */}
+      <Route path="/category" element={<CategoryContainer />} />
     </Routes>
   </BrowserRouter>
   );

@@ -15,9 +15,27 @@ const LoginContainer = () => {
       .matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])/, 'Password must contain at least one number and one special character'),
   });
 
-  const handleSubmit = (values: any) => {
-    // untuk API
-    console.log('Login data:', values);
+  const handleSubmit = async (values: any) => {
+    try {
+      const response = await fetch('https://mock-api.arikmpt.com/api/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to login.');
+      }
+
+      const data = await response.json();
+      console.log('Login success:', data);
+      window.localStorage.setItem("token", data.data.token);
+
+    } catch (error: any) {
+      console.error('Login error:', error.message);
+    }
   };
 
   return (

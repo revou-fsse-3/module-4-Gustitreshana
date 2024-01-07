@@ -34,7 +34,6 @@ const RegisterContainer = () => {
       });
 
       if (response.ok) {
-        // Jika register berhasil, lanjut halaman login
         navigate('/login');
       } else {
         const data = await response.json();
